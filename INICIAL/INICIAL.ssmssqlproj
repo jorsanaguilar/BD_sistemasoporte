@@ -3,7 +3,7 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="DESKTOP-OTI01S4\MSSQLSERVER1:DESKTOP-OTI01S4\LENOVO">
+        <ConnectionNode Name="DESKTOP-OTI01S4\MSSQLSERVER1:LAPTOP-IBD1IO09\ghamp">
           <Created>2024-05-16T19:27:50.5152285-05:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-OTI01S4\MSSQLSERVER1</Server>
@@ -11,6 +11,23 @@
           <Authentication>Windows Authentication</Authentication>
           <InitialDB>Credinegocios</InitialDB>
           <LoginTimeout>30</LoginTimeout>
+          <TrustServerCertificate>False</TrustServerCertificate>
+          <EncryptionOption>True</EncryptionOption>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="LAPTOP-IBD1IO09:sa">
+          <Created>2024-05-16T22:20:50.7759002-05:00</Created>
+          <Type>SQL</Type>
+          <Server>LAPTOP-IBD1IO09</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <TrustServerCertificate>True</TrustServerCertificate>
+          <HostNameInServerCertificate />
+          <EncryptionOption>True</EncryptionOption>
           <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
@@ -19,41 +36,41 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="01_Tablas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>01_Tablas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="02_Data.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>02_Data.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03_Data_Usuarios.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>03_Data_Usuarios.sql</FullPath>
+        </FileNode>
+        <FileNode Name="04_Data_Clientes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>04_Data_Clientes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="05_Data_Servicios.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>05_Data_Servicios.sql</FullPath>
+        </FileNode>
         <FileNode Name="Consultas.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Consultas.sql</FullPath>
-        </FileNode>
-        <FileNode Name="Data.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>Data.sql</FullPath>
-        </FileNode>
-        <FileNode Name="Data_Clientes.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>Data_Clientes.sql</FullPath>
-        </FileNode>
-        <FileNode Name="Data_Servicios.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>Data_Servicios.sql</FullPath>
-        </FileNode>
-        <FileNode Name="Data_Usuarios.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>Data_Usuarios.sql</FullPath>
-        </FileNode>
-        <FileNode Name="Tablas.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-OTI01S4\MSSQLSERVER1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-OTI01S4\MSSQLSERVER1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>Tablas.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
