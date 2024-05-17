@@ -41,6 +41,7 @@ CREATE TABLE Tbl_Servicio (
     FechaHoraFin DATETIME NULL,
     idEstadoAtencion INT NOT NULL,
     tiempoAtencion TIME,
+	equipo VARCHAR(200),
     idUsuario INT NOT NULL,
     activo BIT NOT NULL DEFAULT 1
 );
