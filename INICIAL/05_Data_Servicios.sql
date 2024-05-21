@@ -735,24 +735,71 @@ values
 (727,10,2,'00:13:00.0000000',1,'LAPTOP HP')
 GO
 
--- ToDo: asignar una hora dentro del horario laboral
--- Asignar fecha y hora aleatoria
+-- Función para generar una fecha y hora aleatoria dentro de los límites especificados
+DROP FUNCTION IF EXISTS dbo.GenerarFechaHoraAleatoria
+GO
+CREATE FUNCTION dbo.GenerarFechaHoraAleatoria
+(
+	@fechaInicio DATETIME,
+	@DiasRango INT,
+	@id1 varchar(36),
+	@id2 varchar(36),
+	@id3 varchar(36),
+	@id4 varchar(36)
+)
+RETURNS DATETIME
+AS
+BEGIN
+    DECLARE @fechaAleatoria DATETIME
+    DECLARE @horaAleatoria INT
+    DECLARE @minutosAleatorios INT
+    DECLARE @segundosAleatorios INT
+    DECLARE @diaSemana INT
+
+    -- Generar una fecha aleatoria
+    SET @fechaAleatoria = DATEADD(DAY, ABS(CHECKSUM(@id1)) % @DiasRango, @fechaInicio)
+    SET @diaSemana = DATEPART(WEEKDAY, @fechaAleatoria)
+
+    -- Ajustar si cae en domingo
+    IF @diaSemana = 1
+    BEGIN
+        SET @fechaAleatoria = DATEADD(DAY, 1, @fechaAleatoria)
+    END
+
+    -- Generar una hora aleatoria dentro de los intervalos permitidos
+    SET @horaAleatoria = CASE 
+        WHEN ABS(CHECKSUM(@id2)) % 9 < 5 THEN 8 + ABS(CHECKSUM(@id3)) % 5 -- 8am a 12pm
+        ELSE 15 + ABS(CHECKSUM(@id4)) % 6 -- 3pm a 8pm
+    END
+    SET @minutosAleatorios = ABS(CHECKSUM(@id3)) % 60
+    SET @segundosAleatorios = ABS(CHECKSUM(@id4)) % 60
+
+    -- Combinar la fecha y hora aleatoria
+    SET @fechaAleatoria = DATEADD(HOUR, @horaAleatoria, @fechaAleatoria)
+    SET @fechaAleatoria = DATEADD(MINUTE, @minutosAleatorios, @fechaAleatoria)
+    SET @fechaAleatoria = DATEADD(SECOND, @segundosAleatorios, @fechaAleatoria)
+
+    RETURN @fechaAleatoria
+END
+GO
+
 DECLARE @fechaInicio DATETIME = '2023-10-01'
 DECLARE @fechaFin DATETIME = '2023-12-31'
 DECLARE @DiasRango INT = DATEDIFF(DAY, @fechaInicio, @fechaFin);
 
-UPDATE A
-SET FechaHoraInicio = DATEADD(SECOND, ABS(CHECKSUM(NEWID())) % (86400 * @DiasRango), @FechaInicio)
-FROM Tbl_Servicio A
-WHERE A.idServicio BETWEEN 1 AND 532
+-- Actualizar la tabla con fechas y horas aleatorias generadas
+UPDATE Tbl_Servicio
+SET FechaHoraInicio = dbo.GenerarFechaHoraAleatoria(@fechaInicio, @DiasRango,NEWID(),NEWID(),NEWID(),NEWID())
+WHERE idServicio BETWEEN 1 AND 532
 GO
 
+-- Para el siguiente rango de fechas
 DECLARE @fechaInicio DATETIME = '2024-01-01'
 DECLARE @fechaFin DATETIME = '2024-01-31'
 DECLARE @DiasRango INT = DATEDIFF(DAY, @fechaInicio, @fechaFin);
 
-UPDATE A
-SET FechaHoraInicio = DATEADD(SECOND, ABS(CHECKSUM(NEWID())) % (86400 * @DiasRango), @FechaInicio)
-FROM Tbl_Servicio A
-WHERE A.idServicio BETWEEN 533 AND 727
+-- Actualizar la tabla con fechas y horas aleatorias generadas
+UPDATE Tbl_Servicio
+SET FechaHoraInicio = dbo.GenerarFechaHoraAleatoria(@fechaInicio, @DiasRango,NEWID(),NEWID(),NEWID(),NEWID())
+WHERE idServicio BETWEEN 533 AND 727
 GO
