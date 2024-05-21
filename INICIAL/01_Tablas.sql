@@ -37,7 +37,7 @@ CREATE TABLE Tbl_Servicio (
     idServicio INT IDENTITY PRIMARY KEY,
     idCliente INT NOT NULL,
     idTipoServicio INT NOT NULL,
-    FechaHoraInicio DATETIME NULL,
+    FechaHoraInicio DATETIME NOT NULL DEFAULT '1900-01-01',
     FechaHoraFin DATETIME NULL,
     idEstadoAtencion INT NOT NULL,
     tiempoAtencion TIME,

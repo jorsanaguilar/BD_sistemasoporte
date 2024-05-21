@@ -16,4 +16,3 @@ from Tbl_Servicio A
 		on a.idCliente = b.idCliente
 	inner join Tbl_TipoServicio C
 		on a.idTipoServicio = c.idTipoServicio
-

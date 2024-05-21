@@ -1,3 +1,6 @@
+USE BD_SoporteTecnicoTec
+GO
+
 truncate table Tbl_servicio
 go
 insert into Tbl_servicio
@@ -535,3 +538,14 @@ values
 (530,10,2,'00:28:00.0000000',1,'LAPTOP MSI'),
 (531,10,2,'00:33:00.0000000',4,'LAPTOP TOSHIBA'),
 (532,10,2,'00:33:00.0000000',4,'LAPTOP DELL')
+GO
+
+-- ToDo: asignar una hora dentro del horario laboral
+-- Asignar fecha y hora aleatoria
+DECLARE @fechaInicio DATETIME = '2023-10-01'
+DECLARE @fechaFin DATETIME = '2023-12-31'
+DECLARE @DiasRango INT = DATEDIFF(DAY, @fechaInicio, @fechaFin);
+
+UPDATE Tbl_Servicio
+SET FechaHoraInicio = DATEADD(SECOND, ABS(CHECKSUM(NEWID())) % (86400 * @DiasRango), @FechaInicio)
+GO
