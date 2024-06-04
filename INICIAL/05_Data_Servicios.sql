@@ -783,23 +783,34 @@ BEGIN
 END
 GO
 
+-- 2023 Octubre - Diciembre
 DECLARE @fechaInicio DATETIME = '2023-10-01'
 DECLARE @fechaFin DATETIME = '2023-12-31'
 DECLARE @DiasRango INT = DATEDIFF(DAY, @fechaInicio, @fechaFin);
 
--- Actualizar la tabla con fechas y horas aleatorias generadas
+WITH CTE AS (
+    SELECT idServicio, dbo.GenerarFechaHoraAleatoria(@fechaInicio, @DiasRango, NEWID(), NEWID(), NEWID(), NEWID()) AS FechaHoraInicio
+    FROM Tbl_Servicio
+    WHERE idServicio BETWEEN 1 AND 532
+)
 UPDATE Tbl_Servicio
-SET FechaHoraInicio = dbo.GenerarFechaHoraAleatoria(@fechaInicio, @DiasRango,NEWID(),NEWID(),NEWID(),NEWID())
-WHERE idServicio BETWEEN 1 AND 532
+SET FechaHoraInicio = CTE.FechaHoraInicio
+FROM Tbl_Servicio
+INNER JOIN CTE ON Tbl_Servicio.idServicio = CTE.idServicio
 GO
 
--- Para el siguiente rango de fechas
+-- 2024 Enero
 DECLARE @fechaInicio DATETIME = '2024-01-01'
 DECLARE @fechaFin DATETIME = '2024-01-31'
 DECLARE @DiasRango INT = DATEDIFF(DAY, @fechaInicio, @fechaFin);
 
--- Actualizar la tabla con fechas y horas aleatorias generadas
+WITH CTE AS (
+    SELECT idServicio, dbo.GenerarFechaHoraAleatoria(@fechaInicio, @DiasRango, NEWID(), NEWID(), NEWID(), NEWID()) AS FechaHoraInicio
+    FROM Tbl_Servicio
+    WHERE idServicio BETWEEN 533 AND 727
+)
 UPDATE Tbl_Servicio
-SET FechaHoraInicio = dbo.GenerarFechaHoraAleatoria(@fechaInicio, @DiasRango,NEWID(),NEWID(),NEWID(),NEWID())
-WHERE idServicio BETWEEN 533 AND 727
+SET FechaHoraInicio = CTE.FechaHoraInicio
+FROM Tbl_Servicio
+INNER JOIN CTE ON Tbl_Servicio.idServicio = CTE.idServicio
 GO
